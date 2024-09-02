@@ -24,8 +24,6 @@ const Home = () => {
 
     if (!timetable) return <div>Loading...</div>;
 
-    console.log(timetable.Ｔ602.monDay)
-    console.log(timetable)
 
     return (
         <div>
