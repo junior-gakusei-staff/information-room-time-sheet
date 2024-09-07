@@ -1,4 +1,8 @@
-export const roomName: string[] = []
+export const roomName: string[] = [
+    "t602", "t603", "t604", "t605", "t606", "t607", "t608",
+    "T702", "T703", "T704", "T705", "T706", "T707", "T708",
+    "E501", "E503", "E504", 
+]
 
 
 
