@@ -1,6 +1,6 @@
 
 import Head from 'next/head';
-import Timetable from '@/app/components/Timetable';
+import Timetable from '@/components/Timetable';
 import Link from 'next/link'
 import { ApiResponse,  HomeProps } from '@/app/types/types';
 import type { Metadata } from 'next'
