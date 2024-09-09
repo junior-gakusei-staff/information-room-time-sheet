@@ -1,4 +1,5 @@
 import { roomName } from '@/utils/actions';
+import { ApiResponse } from '@/app/types/types';
 
 export async function generateStaticParams()  {
   // roomNameの配列から、各ルームのidパラメータを生成
@@ -7,7 +8,18 @@ export async function generateStaticParams()  {
   }));
 };
 
-const RoomPage = ({ params }: { params: { id: string } }) => {
+async function getData(): Promise<ApiResponse> {
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL as string);
+  const data: ApiResponse = await response.json();
+  console.log(data);
+  return data;
+}
+
+const RoomPage =async({ params }: { params: { id: string } }) => {
+
+  const data = await getData()
+
+  
   return (
     <div>
       <h1>部屋: {params.id}</h1>

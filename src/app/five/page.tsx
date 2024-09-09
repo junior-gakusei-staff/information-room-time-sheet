@@ -1,5 +1,4 @@
-import Timetable from '@/components/Timetable';
-import Link from 'next/link'
+import Time from "@/components/Time"
 import { ApiResponse,  HomeProps } from '@/app/types/types';
 import type { Metadata } from 'next'
 
@@ -17,20 +16,13 @@ async function getData(): Promise<ApiResponse> {
 const Home: React.FC<HomeProps> = async() => {
     try{
         const timetable = await getData()
+        console.log(timetable.E501)
         return (
                 <main className="container mx-auto p-4">
-                    <nav className="flex justify-between mb-4">
-                        <h1 className="text-3xl font-bold mb-4">情報処理教室時間割表</h1>
-                        <ul className='flex space-x-4 '>
-                            <li><Link href="/" className="text-xl border-b">タワー6階</Link></li>
-                            <li><Link href="/" className="text-xl border-b">タワー7階</Link></li>
-                            <li><Link href="/" className="text-xl border-b">E棟</Link></li>
-                            <li><Link href="/" className="text-xl border-b">申請書対応済</Link></li>
-                        </ul>   
-                    </nav>
                     <div className="grid grid-cols-1 gap-4 ">
-                        {timetable.T602 && <Timetable timetable={timetable.T602} roomName="T-602" />}
-                        {timetable.T603 && <Timetable timetable={timetable.T603} roomName="T-603" />}
+                        {timetable.E501 && <Time timetable={timetable.E501} roomName="E-501" />}
+                        {timetable.E503 &&<Time timetable={timetable.E503} roomName="E-503" />}
+                        {timetable.E504 &&<Time timetable={timetable.E504} roomName="E-504" />}
                     </div>
                 </main> 
         );
