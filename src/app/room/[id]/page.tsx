@@ -1,12 +1,19 @@
-import React from 'react'
+import { roomName } from '@/utils/actions';
 
-const page = ({ params: { id } }: { params: { id: string } }) => {
-    const roomName = id
-    console.log(roomName)
-    
+export async function generateStaticParams()  {
+  // roomNameの配列から、各ルームのidパラメータを生成
+  return roomName.map((room) => ({
+    id: room,
+  }));
+};
+
+const RoomPage = ({ params }: { params: { id: string } }) => {
   return (
-    <div>page</div>
-  )
-}
+    <div>
+      <h1>部屋: {params.id}</h1>
+      {/* 部屋の詳細コンテンツをここに追加 */}
+    </div>
+  );
+};
 
-export default page
+export default RoomPage;
