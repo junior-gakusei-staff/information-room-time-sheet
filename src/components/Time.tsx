@@ -1,30 +1,17 @@
 import React from 'react';
+import { getData } from '@/utils/actions';
+import { DayMapping, TimetableProps, WeekSchedule } from "@/types/types";
 
-interface ClassInfo {
-  className: string;
-  Faculty: string;
-  teacherName: string;
-}
+const Timetable: React.FC<TimetableProps> = async ({ roomName, currentDay }) => {
+  let timetable: WeekSchedule | {} = {};
 
-interface DaySchedule {
-  [key: string]: ClassInfo | undefined;
-}
+  try {
+    const data = await getData();
+    timetable = data[roomName] || {};
+  } catch (error) {
+    console.error("時間割データの取得中にエラーが発生しました:", error);
+  }
 
-interface TimetableData {
-  [key: string]: DaySchedule;
-}
-
-interface TimetableProp {
-  timetable: TimetableData;
-  roomName: string;
-  currentDay: string;
-}
-
-type DayMapping = {
-  [key: string]: string;
-};
-
-const Timetable: React.FC<TimetableProp> = ({ timetable, roomName, currentDay }) => {
   const dayMapping: DayMapping = {
     '月曜日': 'monDay',
     '火曜日': 'tuesDay',
@@ -35,11 +22,12 @@ const Timetable: React.FC<TimetableProp> = ({ timetable, roomName, currentDay })
     '日曜日': 'sunDay'
   };
 
-  const currentDayKey: string = dayMapping[currentDay] || '';
+  const currentDayKey = dayMapping[currentDay] || '';
   const currentDayName = Object.keys(dayMapping).find(key => dayMapping[key] === currentDayKey) || '';
 
-  const renderTableRows = (classPeriod: string, index: number) => {
-    const classInfo = timetable[currentDayKey]?.[classPeriod];
+  const renderTableRows = (classPeriod: `class-${number}`, index: number) => {
+    const classInfo = (timetable as WeekSchedule)[currentDayKey as keyof WeekSchedule]?.[classPeriod];
+
     return (
       <div key={classPeriod} className="mb-4 bg-white rounded-lg shadow-md overflow-hidden">
         <div className="bg-indigo-600 text-white py-2 px-4 font-bold text-lg">
@@ -71,7 +59,7 @@ const Timetable: React.FC<TimetableProp> = ({ timetable, roomName, currentDay })
         </span>
       </div>
       <div className="space-y-4">
-        {['class-1', 'class-2', 'class-3', 'class-4', 'class-5', 'class-6', 'class-7'].map((classPeriod, index) => (
+        {(['class-1', 'class-2', 'class-3', 'class-4', 'class-5', 'class-6', 'class-7'] as const).map((classPeriod, index) => (
           renderTableRows(classPeriod, index + 1)
         ))}
       </div>

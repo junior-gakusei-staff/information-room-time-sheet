@@ -1,7 +1,7 @@
 import Time from "@/components/Time"
-import { ApiResponse,  HomeProps } from '@/app/types/types';
+import { ApiResponse,  HomeProps } from '@/types/types';
 import type { Metadata } from 'next'
-
+import { getCurrentDay } from "@/utils/actions";
 export const metadata: Metadata = {
     title: '情報処理教室時間割表',
   }
@@ -14,15 +14,16 @@ async function getData(): Promise<ApiResponse> {
 }
 
 const Home: React.FC<HomeProps> = async() => {
+    const currentDay = getCurrentDay()
     try{
         const timetable = await getData()
         console.log(timetable.E501)
         return (
                 <main className="container mx-auto p-4">
                     <div className="grid grid-cols-1 gap-4 ">
-                        {timetable.E501 && <Time timetable={timetable.E501} roomName="E-501" />}
-                        {timetable.E503 &&<Time timetable={timetable.E503} roomName="E-503" />}
-                        {timetable.E504 &&<Time timetable={timetable.E504} roomName="E-504" />}
+                            <Time currentDay={currentDay} roomName="E-501" />
+                            <Time currentDay={currentDay} roomName="E-503" />
+                            <Time currentDay={currentDay} roomName="E-504" />
                     </div>
                 </main> 
         );

@@ -1,26 +1,15 @@
 import Time from "@/components/Time"
-import { ApiResponse, HomeProps } from '@/app/types/types';
+import { HomeProps } from '@/types/types';
 import type { Metadata } from 'next'
 import Select from "@/components/SelectRoom"
-import { format } from 'date-fns';
-import { ja } from 'date-fns/locale';
+import { getCurrentDay } from "@/utils/actions";
 
 export const metadata: Metadata = {
   title: '情報処理教室時間割表',
 }
-
-async function getData(): Promise<ApiResponse> {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL as string);
-  const data: ApiResponse = await response.json();
-  console.log(data);
-  return data;
-}
-const now = new Date();
-const currentDay = format(now, 'EEEE', { locale: ja }).toLowerCase();
-
-const Home: React.FC<HomeProps> = async () => {
+const Home: React.FC<HomeProps> = () => {
   try {
-    const timetable = await getData()
+    const currentDay = "火曜日"
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200">
         <main className="container mx-auto p-4 md:p-8">
@@ -28,8 +17,8 @@ const Home: React.FC<HomeProps> = async () => {
             <Select />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {timetable.T602 && <Time timetable={timetable.T602} roomName="T-602" currentDay={currentDay} />}
-            {timetable.T603 && <Time timetable={timetable.T603} roomName="T-603" currentDay={currentDay}/>}
+            {<Time  roomName="T602" currentDay={currentDay} />}
+            {<Time  roomName="T603" currentDay={currentDay}/>}
           </div>
         </main>
       </div>

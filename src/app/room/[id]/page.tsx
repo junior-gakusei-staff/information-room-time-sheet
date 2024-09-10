@@ -1,5 +1,5 @@
 import { roomName } from '@/utils/actions';
-import { ApiResponse } from '@/app/types/types';
+import { ApiResponse } from '@/types/types';
 
 export async function generateStaticParams()  {
   // roomNameの配列から、各ルームのidパラメータを生成
