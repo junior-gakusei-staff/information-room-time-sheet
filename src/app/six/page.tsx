@@ -19,6 +19,7 @@ const Home: React.FC<HomeProps> = async() => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {t60Rooms.map((roomName, index) => (
                         <Time roomName={roomName} currentDay={currentDay} key={`${roomName}${index}`}/>
+                        
                         ))}
                     </div>
                 </main>
