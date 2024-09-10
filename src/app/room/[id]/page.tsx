@@ -11,7 +11,7 @@ export async function generateStaticParams()  {
 async function getData(): Promise<ApiResponse> {
   const response = await fetch(process.env.NEXT_PUBLIC_API_URL as string);
   const data: ApiResponse = await response.json();
-  console.log(data);
+
   return data;
 }
 

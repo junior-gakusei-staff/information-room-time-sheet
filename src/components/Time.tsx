@@ -8,6 +8,7 @@ const Timetable: React.FC<TimetableProps> = async ({ roomName, currentDay }) => 
   try {
     const data = await getData();
     timetable = data[roomName] || {};
+    console.log(timetable)
   } catch (error) {
     console.error("時間割データの取得中にエラーが発生しました:", error);
   }

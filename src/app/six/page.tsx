@@ -2,7 +2,7 @@ import Time from "@/components/Time"
 import { ApiResponse,  HomeProps } from '@/types/types';
 import type { Metadata } from 'next'
 import { getCurrentDay } from "@/utils/actions";
-
+import { t60Rooms } from "@/utils/actions";
 export const metadata: Metadata = {
     title: '情報処理教室時間割表',
   }
@@ -14,12 +14,15 @@ const Home: React.FC<HomeProps> = async() => {
     try{
         
         return (
-                <main className="container mx-auto p-4">
-                    <div className="grid grid-cols-1 gap-4 ">
-                        {<Time currentDay={currentDay} roomName="T-602" />}
-                        {<Time currentDay={currentDay} roomName="T-603" />}
+            <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200">
+                <main className="container mx-auto p-4 md:p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {t60Rooms.map((roomName, index) => (
+                        <Time roomName={roomName} currentDay={currentDay} />
+                        ))}
                     </div>
-                </main> 
+                </main>
+            </div> 
         );
     }catch(e){
         return(

@@ -27,7 +27,7 @@ const Home: React.FC<HomeProps> = async () => {
       <main className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-6 text-center">申請書対応済み一覧</h1>
         <div className="grid grid-cols-1 gap-4">
-          {timetable.map((classInfo,index) => (
+          {timetable.map((classInfo) => (
             <ClassCard key={`${classInfo.startDay}-${classInfo.startTime}`} classInfo={classInfo} index={classInfo.startTime} />
           ))}
         </div>

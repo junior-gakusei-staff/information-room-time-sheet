@@ -19,7 +19,7 @@ const Select: React.FC = () => {
   };
 
   return (
-    <select onChange={handleChange} className="p-2 border rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+    <select onChange={handleChange} className="mb-4 p-2 border rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
       <option value="">曜日を選択してください</option>
       {weekDays.map((day) => (
         <option key={day.en} value={day.en}>
