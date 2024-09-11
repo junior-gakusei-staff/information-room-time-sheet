@@ -1,7 +1,7 @@
-"use client"
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import { roomName } from '@/utils/actions';
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
+import { roomName } from "@/utils/actions";
 
 const Select: React.FC = () => {
   const router = useRouter();

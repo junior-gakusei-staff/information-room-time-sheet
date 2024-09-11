@@ -14,16 +14,19 @@
 ### インストール手順
 
 1. リポジトリをクローンします。
+
    ```bash
    git clone https://github.com/junior-gakusei-staff/iformation-room-time-sheet.git
    ```
 
 2. プロジェクトディレクトリに移動します。
+
    ```bash
    cd iformation-room-time-sheet
    ```
 
 3. 依存関係をインストールします。
+
    ```bash
    npm install
    ```
@@ -74,5 +77,3 @@ npm run start
 ## ライセンス
 
 このプロジェクトは [MITライセンス](https://opensource.org/licenses/MIT) の下で公開されています。
-
-

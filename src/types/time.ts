@@ -1,4 +1,3 @@
 export type DayMapping = {
-    [key: string]: string;
-  };
-  
+  [key: string]: string;
+};

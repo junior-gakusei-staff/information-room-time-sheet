@@ -39,8 +39,22 @@ export type DayMapping = {
 export interface HomeProps {
   // 必要に応じてプロパティを追加
 }
-export type JapaneseDayOfWeek = '月曜日' | '火曜日' | '水曜日' | '木曜日' | '金曜日' | '土曜日' | '日曜日';
-export type EnglishDayOfWeek = 'monDay' | 'tuesDay' | 'wednesDay' | 'thursDay' | 'friDay' | 'saturDay' | 'sunDay';
+export type JapaneseDayOfWeek =
+  | "月曜日"
+  | "火曜日"
+  | "水曜日"
+  | "木曜日"
+  | "金曜日"
+  | "土曜日"
+  | "日曜日";
+export type EnglishDayOfWeek =
+  | "monDay"
+  | "tuesDay"
+  | "wednesDay"
+  | "thursDay"
+  | "friDay"
+  | "saturDay"
+  | "sunDay";
 
 export type DayMappings = {
   [key in JapaneseDayOfWeek]: EnglishDayOfWeek;

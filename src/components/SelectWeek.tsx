@@ -1,6 +1,6 @@
-"use client"
-import React from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 const Select: React.FC = () => {
   const router = useRouter();
@@ -10,7 +10,7 @@ const Select: React.FC = () => {
     { jp: "水", en: "wednesDay" },
     { jp: "木", en: "thursDay" },
     { jp: "金", en: "friDay" },
-    { jp: "土", en: "saturDay" }
+    { jp: "土", en: "saturDay" },
   ];
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -19,7 +19,10 @@ const Select: React.FC = () => {
   };
 
   return (
-    <select onChange={handleChange} className="mb-4 p-2 border rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+    <select
+      onChange={handleChange}
+      className="mb-4 p-2 border rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+    >
       <option value="">曜日を選択してください</option>
       {weekDays.map((day) => (
         <option key={day.en} value={day.en}>
