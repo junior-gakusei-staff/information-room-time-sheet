@@ -3,6 +3,7 @@ import { WeekSchedule, ClassInfo } from '@/types/types';
 
 interface RawClassInfo {
   className: string;
+  faculty:string;
   teacher: string;
   startTime: number;
   endTime: number;
@@ -29,18 +30,23 @@ export async function getProcessedRequestData(): Promise<WeekSchedule> {
     // 開始日が現在日付より前の場合はスキップ
     if (item.startDay < currentDate) return;
 
-    const dayOfWeek = getDayOfWeek(item.startDay);
-    if (dayOfWeek) {
-      const classKey = `class-${item.startTime}` as keyof typeof processedData[typeof dayOfWeek];
-      
-      const classInfo: ClassInfo = {
-        className: item.className,
-        Faculty: '', // RawClassInfoにFacultyがないため、空文字列を設定
-        teacherName: item.teacher
-      };
-
-      processedData[dayOfWeek][classKey] = classInfo;
+    
+    const executeEnd = item.startTime+item.endTime
+    for(let i=item.startTime; i < executeEnd; i++){
+      const dayOfWeek = getDayOfWeek(item.startDay);
+      if (dayOfWeek) {
+        const classKey = `class-${item.startTime}` as keyof typeof processedData[typeof dayOfWeek];
+        
+        const classInfo: ClassInfo = {
+          className: item.className,
+          Faculty: item.faculty, 
+          teacherName: item.teacher
+        };
+  
+        processedData[dayOfWeek][classKey] = classInfo;
+      }
     }
+    
   });
 
   return processedData;
