@@ -14,7 +14,7 @@ const Home: React.FC<HomeProps> = async () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200">
         <main className="container mx-auto p-4 md:p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-7 gap-8">
             {t60Rooms.map((roomName, index) => (
               <Time
                 roomName={roomName}
